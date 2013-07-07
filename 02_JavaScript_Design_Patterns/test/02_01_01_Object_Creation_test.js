@@ -1,7 +1,7 @@
 // 2.1 コンストラクタパターン(The Constructor Pattern)
 
 // 2.1.1 オブジェクト作成
-TestCase("02_01_Object_Creation",{
+TestCase("02_01_01_Object_Creation",{
 	"test set Properties By Dot syntax" : function(){
 		var newObject = {};
 
