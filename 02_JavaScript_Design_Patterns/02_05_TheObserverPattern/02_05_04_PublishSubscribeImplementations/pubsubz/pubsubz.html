@@ -1,0 +1,38 @@
+<html>
+<head>
+	<title>Pub/Sub Test</title>
+	<script type="text/javascript" src="pubsubz.js"></script>
+</head>
+<body>
+	<script type="text/javascript">
+
+		// コールバック関数
+		var testSubscriber = function( topics , data ){
+		    console.log( topics + ": " + data );
+		};
+
+		// サブスクライバ
+		// 購読したトピックを監視し、トピックに新しい通知がブロードキャストされるとコールバック関数を呼び出す
+		var testSubscription = pubsubz.subscribe( 'example1', testSubscriber );
+
+		// example1が発行される。
+		// アプリケーションへの通知を担当
+		pubsubz.publish( 'example1', 'hello world!' );
+		pubsubz.publish( 'example1', ['test','a','b','c'] );
+		pubsubz.publish( 'example1', [{'color':'blue'},{'text':'hello'}] );
+
+		// 購読の中止
+		pubsubz.unsubscribe( testSubscription );
+
+		// 中止されたコールバック関数は呼び出されない
+		pubsubz.publish( 'example1', 'hello again!' );
+
+	</script>
+	<p>
+		<h1>pubsubz Test</h1>
+		<p>
+			a console simulator open.
+		</p>
+	</p>
+</body>
+</html>
